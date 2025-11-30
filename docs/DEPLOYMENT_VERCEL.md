@@ -146,14 +146,11 @@ spam-ham/
       "src": "/(.*)",
       "dest": "api/index.py"
     }
-  ],
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
 ```
+
+**Note**: The `functions` property cannot be used with `builds`. If you need to configure function settings like `maxDuration`, set them in the Vercel dashboard under Project Settings → Functions.
 
 ### api/index.py
 
@@ -188,17 +185,14 @@ pip freeze > requirements.txt
 
 ### Issue: Cold Start Timeout
 
-**Solution**: Increase function timeout in `vercel.json`:
-
-```json
-{
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 60
-    }
-  }
-}
-```
+**Solution**: Increase function timeout in Vercel Dashboard:
+1. Go to Project Settings → Functions
+2. Set "Max Duration" to 60 seconds (or higher)
+3. Or use Vercel CLI:
+   ```bash
+   vercel env add VERCEL_FUNCTION_MAX_DURATION
+   # Enter value: 60
+   ```
 
 ### Issue: Memory Limit Exceeded
 
