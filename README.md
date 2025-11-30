@@ -203,12 +203,14 @@ SPAM_HAM/
 │
 ├── scripts/               # Utility scripts
 │   ├── train_model.py     # Model training script
+│   ├── compare_algorithms.py # Compare individual algorithm performance
 │   ├── save_artifact.py   # Save model as artifact
 │   └── save_best_model.py # Save best performing model
 │
 ├── docs/                  # Additional documentation
 │   ├── README.md
-│   └── MODEL_USAGE.md
+│   ├── MODEL_USAGE.md
+│   └── ENSEMBLE_MODEL.md  # Ensemble model architecture details
 │
 ├── static/                # Frontend static files
 │   ├── css/
@@ -235,17 +237,34 @@ python scripts/train_model.py
 The script will:
 1. Load training data from `data/` directory
 2. Preprocess and vectorize text
-3. Train ensemble classifier
+3. Train ensemble voting classifier
 4. Evaluate performance
 5. Save the best model
 
+### Comparing Algorithm Performance
+
+To compare individual algorithm accuracies:
+
+```bash
+python scripts/compare_algorithms.py
+```
+
+This script evaluates each algorithm separately and shows:
+- Individual algorithm performance metrics
+- Accuracy comparison ranking
+- Ensemble improvement over best individual model
+
 ### Model Architecture
 
-The system uses an ensemble voting classifier combining:
-- **Multinomial Naive Bayes**: Fast probabilistic classifier
+The system uses an **Ensemble Voting Classifier** combining three complementary algorithms:
+
+- **Multinomial Naive Bayes**: Fast probabilistic classifier optimized for text
 - **Logistic Regression**: Linear classification with regularization
-- **Decision Tree**: Rule-based classification
-- **Random Forest**: Ensemble of decision trees
+- **Random Forest**: Non-linear ensemble classifier capturing complex patterns
+
+**Performance**: 98.4% accuracy using soft voting mechanism
+
+📖 **Detailed Documentation**: See [`docs/ENSEMBLE_MODEL.md`](docs/ENSEMBLE_MODEL.md) for comprehensive architecture details, algorithm comparison, and performance analysis.
 
 ### Running Jupyter Notebooks
 
@@ -259,6 +278,28 @@ jupyter notebook notebooks/
 - **Precision**: High precision for both spam and ham classification
 - **Recall**: Excellent recall for spam detection
 - **F1-Score**: Balanced performance metrics
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[ENSEMBLE_MODEL.md](docs/ENSEMBLE_MODEL.md)** - **Complete guide to the Ensemble Voting Classifier**
+  - Architecture overview and pipeline structure
+  - Detailed explanation of each algorithm (Naive Bayes, Logistic Regression, Random Forest)
+  - Soft voting mechanism and how it works
+  - Performance comparison and metrics
+  - Feature engineering (TF-IDF, SMOTE)
+  - Model training process and configuration
+  - Algorithm selection rationale
+
+- **[MODEL_USAGE.md](docs/MODEL_USAGE.md)** - Model usage examples and API reference
+- **[README.md](docs/README.md)** - Complete setup and configuration guide
+
+### Quick Links
+
+- 🏗️ **Model Architecture**: [Ensemble Voting Classifier Details](docs/ENSEMBLE_MODEL.md)
+- 🔧 **Usage Guide**: [How to Use the Model](docs/MODEL_USAGE.md)
+- 📊 **Compare Algorithms**: Run `python scripts/compare_algorithms.py` to see individual algorithm performance
 
 ## 🛠️ Technologies Used
 
