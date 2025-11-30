@@ -343,6 +343,30 @@ This project is open source and available under the [MIT License](LICENSE).
 - Flask community for the web framework
 - All contributors and users of this project
 
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+See [Deployment Guide](docs/DEPLOYMENT_VERCEL.md) for detailed instructions on deploying to Vercel.
+
+**Quick Start:**
+```bash
+# Install Vercel CLI
+npm install -g vercel
+
+# Login
+vercel login
+
+# Deploy
+vercel
+```
+
+**Alternative Platforms:**
+- **Railway** (Recommended for Flask) - Easy deployment
+- **Render** - Free tier available
+- **Fly.io** - Good for Python apps
+- **Heroku** - Classic option
+
 ## 📧 Support
 
 For issues, questions, or contributions, please open an issue on the [GitHub repository](https://github.com/Poornachandra-dh/SPAM_HAM/issues).
